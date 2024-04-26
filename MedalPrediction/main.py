@@ -3,5 +3,5 @@ from athelete import Athelete
 
 class PlayerMain:
     
-    X, Y = Athelete.dataSplit()
-    Athelete.preDataVisualization(X, Y)
+    X1, X2, Y = Athelete.dataSplit()
+    Athelete.preDataVisualization(X1, X2, Y)
