@@ -48,31 +48,30 @@ class Athelete:
     def trainModel(cls, X_train, X_test, y_train, y_test):
         model = LinearRegression()
         model.fit(X_train, y_train)
-        predictions = model.predict(X_test)
+        y_prediction_train = model.predict(X_train)
         #Conert -ve values to 0 and rounding off decimal values 
-        predictions = np.where(predictions > 0, np.round(predictions), 0)
-        print(predictions)
-            
-        # display(cls.df)
-        # print(predictions)
+        y_prediction_train = np.where(y_prediction_train > 0, np.round(y_prediction_train), 0)
+      
         
-        plt.scatter(y_test, predictions, color="blue")
-        plt.xlabel("Actual medals")
-        plt.ylabel("Predicted medals")
+
+        #Visualization for training set
+        plt.scatter(y_train, y_prediction_train)
+        plt.xlabel('Actual Medal')
+        plt.ylabel('Predicted Medal')
         plt.show()
 
-        plt.scatter(athelete_feature, y_test, color="black")
-        plt.plot(athelete_feature, predictions, color="blue", linewidth=3)
-        plt.show()
-        # plt.xticks(())
-        # plt.yticks(())
-        # predictions1 = model.predict(X_train)
-        # predictions1 = np.where(predictions1 > 0, np.round(predictions1), 0)
-        # predictions1.shape
 
-        # plt.scatter(y_train, model.predict(X_train), color="red")
-        # plt.plot()
-        # plt.show()
+        #For test data
+        y_prediction_test = model.predict(X_test)
+        y_prediction_test = np.where(y_prediction_test > 0, np.round(y_prediction_test), 0)
+        
+
+        #Visualization for test data
+        plt.scatter(y_test, y_prediction_test)
+        plt.xlabel('Actual Medal')
+        plt.ylabel('Predicted Medal')
+        plt.show()
+      
         
         
         
